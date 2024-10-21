@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author JOHAN
+ * @authores Johan & Yonier & Sebastián
  */
 public class JavaFXControl extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+         
         Parent root = FXMLLoader.load(getClass().getResource("/Control_Vista/view.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
