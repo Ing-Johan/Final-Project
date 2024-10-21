@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author JOHAN
+ * @author JOHAN y Yonier
  */
 public class JavaFXControl extends Application{
 
