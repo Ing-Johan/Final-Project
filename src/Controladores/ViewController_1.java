@@ -1,4 +1,4 @@
-package Control_Vista;
+package Controladores;
 
 
 import java.io.IOException;
@@ -23,19 +23,19 @@ import javax.swing.JOptionPane;
  *
  * @authores Johan & Yonier & Sebastián
  */
-public class ViewController implements Initializable {
+public class ViewController_1 implements Initializable {
     
     @FXML
-    private Button btn,btn2;
+    private Button btn;
     
     @FXML
-    private TextField txtCorreo,txtUser,txtArea;
+    private TextField txtCorreo,txtArea, txtUser;
     
     @FXML
     private PasswordField txtPass,passConfirm;
     
     @FXML
-    private void actionEvent(ActionEvent event){
+    private void actionEvent(ActionEvent event) throws IOException{
         
         Object evt = event.getSource();
         
@@ -55,26 +55,28 @@ public class ViewController implements Initializable {
                 txtArea.setText("¡La contraseña no coincide!");
             }else{
                 JOptionPane.showMessageDialog(null, "¡Ingreso exitoso!");
-                loadStage("/Control_Vista/viewMain.fxml",event);
+                loadStage(event); 
             }
-            
-        }else if(evt.equals(btn2)){
-            JOptionPane.showMessageDialog(null, "¡Nos vemos pronto!");
-            loadStage("/Control_Vista/view.fxml",event);
         }
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
     
-    public void loadStage(String url, Event event){
+    public void loadStage( Event event){
         
         try{
             
             ((Node) (event.getSource())).getScene().getWindow().hide();
             
-            Parent root = FXMLLoader.load(getClass().getResource(url)); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewSexo.fxml")); 
+            Parent root = loader.load();
+            
+            ViewMainController main = loader.getController();
+            main.name = ""+txtUser.getText();
+            
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
             newStage.setScene(scene);
