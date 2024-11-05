@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="617.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewMainController">
+<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="617.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewSexoController">
    <children>
       <VBox alignment="CENTER" prefHeight="403.0" prefWidth="617.0" style="-fx-background-image: url('/images/banner.jpg');">
          <children>
@@ -58,7 +58,7 @@
                   <Insets top="50.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="btnSex" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: white;" text="Continuar">
+            <Button fx:id="btnSex" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#action" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: white;" text="Continuar">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>

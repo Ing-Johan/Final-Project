@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
@@ -13,28 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="1321.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewMainController">
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1286.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewMainController">
    <children>
-      <VBox alignment="CENTER" layoutX="315.0" layoutY="124.0" prefHeight="200.0" prefWidth="237.0" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="124.0">
+      <VBox prefHeight="740.0" prefWidth="1207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" prefHeight="78.0" prefWidth="199.0" text="El programa" textAlignment="CENTER" textFill="#ee1111">
-               <font>
-                  <Font name="Bodoni MT Black" size="25.0" />
-               </font>
-            </Label>
-            <Button fx:id="btn2" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="40.0" prefWidth="112.0" style="-fx-background-color: cd2703;" text="Regresar" textFill="WHITE">
-               <font>
-                  <Font name="Bodoni MT Black" size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-      </VBox>
-      <VBox prefHeight="147.0" prefWidth="784.0" style="-fx-background-image: url('images/banner.jpg'); -fx-background-size: cover; -fx-background-repeat: no-repeat;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="151.0" prefWidth="1321.0">
+            <HBox alignment="CENTER" prefHeight="140.0" style="-fx-background-image: url('images/banner.jpg'); -fx-background-size: cover;">
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
@@ -57,7 +41,7 @@
                               <Font name="Arial Black" size="14.0" />
                            </font>
                         </TextField>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: ffffff01;" textFill="WHITE">
+                        <Button fx:id="btnSearch" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: ffffff01;" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>
@@ -79,20 +63,23 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="147.0" prefWidth="364.0">
                      <children>
-                        <TextField fx:id="nameUser" editable="false" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: ffffff01; -fx-text-fill: fdfefe;" text="User">
+                        <TextField fx:id="nameUser" editable="false" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: ffffff01; -fx-text-fill: fdfefe;" text="User">
                            <font>
                               <Font name="Arial Black" size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnUser" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="84.0" prefWidth="113.0" style="-fx-background-color: fffff20;" text="Button">
+                        <Button fx:id="btnUser" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="84.0" prefWidth="113.0" style="-fx-background-color: fffff20;">
                            <graphic>
-                              <ImageView fx:id="imgUser" fitHeight="88.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgUser" fitHeight="105.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/user.jpeg" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
                               </ImageView>
                            </graphic>
                            <cursor>
@@ -104,5 +91,35 @@
                </children>
             </HBox>
          </children></VBox>
+      <VBox fx:id="ContenedorPrincipal" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#eventAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #59b5b5;" text="Regresar" textFill="WHITE" visible="false">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/volver.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pagination fx:id="paginas" cache="true" cacheHint="SCALE" maxPageIndicatorCount="3" pageCount="10">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="100.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pagination>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </VBox>
    </children>
 </AnchorPane>

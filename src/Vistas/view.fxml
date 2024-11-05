@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewController_1">
+<GridPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewLoginController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -22,7 +22,7 @@
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="679.0" prefWidth="1006.0" style="-fx-background-image: url('/images/img-login.jpg'); -fx-background-size: cover;">
+      <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-image: url('/images/img-login.jpg'); -fx-background-size: cover;">
          <children>
             <VBox alignment="CENTER" layoutX="35.0" layoutY="30.0" prefHeight="636.0" prefWidth="302.0" style="-fx-background-color: f8f9f995; -fx-background-radius: 30;" AnchorPane.leftAnchor="46.0">
                <children>
