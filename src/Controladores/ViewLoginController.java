@@ -81,6 +81,7 @@ public class ViewLoginController implements Initializable {
             ViewSexoController main = loader.getController();
             main.name = txtUser.getText();
             main.password = txtPass.getText();
+            main.email = txtCorreo.getText();
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();

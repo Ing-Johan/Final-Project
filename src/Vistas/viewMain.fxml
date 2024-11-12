@@ -27,7 +27,7 @@
                               <Image url="@../images/logo.png" />
                            </image>
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets right="100.0" />
                            </HBox.margin>
                            <effect>
                               <Reflection fraction="0.35" topOpacity="0.19" />
@@ -35,7 +35,7 @@
                         </ImageView>
                         <TextField fx:id="txtBuscar" alignment="CENTER" prefHeight="54.0" prefWidth="754.0" promptText="Buscar..." style="-fx-border-radius: 20;">
                            <HBox.margin>
-                              <Insets left="100.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                            <font>
                               <Font name="Arial Black" size="14.0" />
@@ -63,7 +63,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="147.0" prefWidth="364.0">
                      <children>
-                        <TextField fx:id="nameUser" editable="false" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: ffffff01; -fx-text-fill: fdfefe;" text="User">
+                        <TextField fx:id="nameUser" alignment="TOP_RIGHT" editable="false" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: ffffff01; -fx-text-fill: fdfefe;" text="User">
                            <font>
                               <Font name="Arial Black" size="18.0" />
                            </font>
@@ -91,7 +91,7 @@
                </children>
             </HBox>
          </children></VBox>
-      <VBox fx:id="ContenedorPrincipal" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+      <VBox fx:id="ContenedorPrincipal" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: ffffff80;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
          <children>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#eventAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #59b5b5;" text="Regresar" textFill="WHITE" visible="false">
                <VBox.margin>

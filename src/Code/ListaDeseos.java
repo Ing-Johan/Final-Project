@@ -1,3 +1,4 @@
+
 package Code;
 
 import java.util.HashMap;
@@ -7,11 +8,12 @@ import javax.swing.JOptionPane;
  *
  * @authores Johan & Yonier & Sebastian
  */
-public class CarritoCompras {
+public class ListaDeseos {
+    
     Nodo<Producto> inicio;
     HashMap<String, Nodo<Producto>> indiceProd;
     
-    public CarritoCompras(){
+    public ListaDeseos(){
         inicio = null;
         indiceProd = new HashMap<>();
     }
@@ -63,7 +65,7 @@ public class CarritoCompras {
                     a.sig = inicio;
                 }
             indiceProd.put(producto.idProd, a);
-            JOptionPane.showMessageDialog(null, "Producto agregado al carrito.");
+            JOptionPane.showMessageDialog(null, "Producto agregado a la lista de deseos.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
@@ -72,7 +74,7 @@ public class CarritoCompras {
     
     public void setAtender(String id) {
          if (getEsColaVacia()) {
-            JOptionPane.showMessageDialog(null,"El carrito está vacío.");
+            JOptionPane.showMessageDialog(null,"La lista de deseos está vacía.");
             return;
         }
 
@@ -96,7 +98,7 @@ public class CarritoCompras {
                     p.sig = a.sig;
                 }
                 indiceProd.remove(id);
-                JOptionPane.showMessageDialog(null,"Producto eliminado del carrito.");
+                JOptionPane.showMessageDialog(null,"Producto eliminado de la lista de deseos.");
                 break;
             }
             p = a;
@@ -104,7 +106,7 @@ public class CarritoCompras {
         } while (a != inicio);
 
         if (!encontrado) {
-            JOptionPane.showMessageDialog(null,"Producto no encontrado en el carrito.");
+            JOptionPane.showMessageDialog(null,"Producto no encontrado en la lista de deseos.");
         }
     }
 }

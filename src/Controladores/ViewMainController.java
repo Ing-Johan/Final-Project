@@ -1,5 +1,7 @@
 package Controladores;
 
+import Code.CarritoCompras;
+import Code.ListaDeseos;
 import Code.ListaProductos;
 import Code.Nodo;
 import Code.Producto;
@@ -36,13 +38,11 @@ import javax.swing.JOptionPane;
  */
 public class ViewMainController implements Initializable {
     
-    String password,sexo;
-    
-    Label label = new Label("Todo el contenido de este sitio es propiedad de los ingenieros Johan Hernández, Yonier Cavadía y Sebastián Madera, y está protegido por derechos de autor.  ©2024");
-    
+    public String password,sexo,email;
+    private final Label label = new Label("Todo el contenido de este sitio es propiedad de los ingenieros Johan Hernández, Yonier Cavadía y Sebastián Madera, y está protegido por derechos de autor.  ©2024");
     private final ListaProductos listaProductos = new ListaProductos();
-    private final ListaProductos carritoCompras = new ListaProductos();
-    private final ListaProductos listaDeseos = new ListaProductos();
+    private final CarritoCompras miCarrito = new CarritoCompras();
+    private final ListaDeseos miLista = new ListaDeseos();
     
     @FXML
     private Pagination paginas;
@@ -114,14 +114,14 @@ public class ViewMainController implements Initializable {
     private void configurarBotonCarrito(Button btnCarrito, Producto producto) {
         btnCarrito.setOnAction(event -> {
             ImageView imageView = (ImageView) btnCarrito.getGraphic();
-            if (carritoCompras.contieneProducto(producto)) {
-                carritoCompras.eliminarProducto(producto);
+            if (miCarrito.contieneProducto(producto.idProd)) {
+                miCarrito.setAtender(producto.idProd);
                 imageView.setImage(new Image("/images/carrito-de-compras.png"));
-                JOptionPane.showMessageDialog(null, "Producto eliminado del carrito.");
+                System.out.println(producto.toString()+"Eliminado");
             } else {
-                carritoCompras.agregarProducto(producto);
+                miCarrito.setAddColaH(producto);
                 imageView.setImage(new Image("/images/carrito-de-compras-agg.png"));
-                JOptionPane.showMessageDialog(null, "Producto agregado al carrito.");
+                System.out.println(producto.toString()+"Agregado");
             }
         });
     }
@@ -129,14 +129,14 @@ public class ViewMainController implements Initializable {
     private void configurarBotonDeseo(Button btnDeseo, Producto producto) {
         btnDeseo.setOnAction(event -> {
             ImageView imageView = (ImageView) btnDeseo.getGraphic();
-            if (listaDeseos.contieneProducto(producto)) {
-                listaDeseos.eliminarProducto(producto);
+            if (miLista.contieneProducto(producto.idProd)) {
+                miLista.setAtender(producto.idProd);
                 imageView.setImage(new Image("/images/amar.png"));
-                JOptionPane.showMessageDialog(null, "Producto eliminado de la lista de deseos.");
+                System.out.println(producto.toString()+"Eliminado");
             } else {
-                listaDeseos.agregarProducto(producto);
+                miLista.setAddColaH(producto);
                 imageView.setImage(new Image("/images/amor.png"));
-                JOptionPane.showMessageDialog(null, "Producto agregado a la lista de deseos.");
+                System.out.println(producto.toString()+"Agregado");
             }
         });
     }
@@ -144,16 +144,12 @@ public class ViewMainController implements Initializable {
     private void productosFiltrados(String searchText) {
         
         ContenedorPrincipal.getChildren().clear();
-        
         GridPane gridPane = new GridPane();
-        
-
         Nodo<Producto> productosFiltrados = listaProductos.buscarProducto(searchText);
     
         int fila = 0;
         int columna = 0;
         
-
         while (productosFiltrados != null) {
             Producto producto = productosFiltrados.datos;
 
@@ -173,7 +169,6 @@ public class ViewMainController implements Initializable {
             precio.setStyle("-fx-font-size: 12; -fx-text-fill: #555555;");
             
             HBox hboxBtns = crearBotones(producto);
-
             vboxProducto.getChildren().addAll(imagen, nombre, precio, hboxBtns);
         
             GridPane.setHgrow(vboxProducto, Priority.ALWAYS);
@@ -184,15 +179,13 @@ public class ViewMainController implements Initializable {
                 fila = 0;
                 columna++;
             }
-
             productosFiltrados = productosFiltrados.sig; 
         }
         
         btnBack.setVisible(true);
         ContenedorPrincipal.setMargin(btnBack, new Insets(20, 0, 0, 0));
         
-        if(listaProductos.tamEncontrados>0) 
-            ContenedorPrincipal.getChildren().addAll(gridPane,btnBack);
+        if(listaProductos.tamEncontrados>0) ContenedorPrincipal.getChildren().addAll(gridPane,btnBack);
         
         else {
             Image image = new Image("/images/extraviado.png");
@@ -219,7 +212,6 @@ public class ViewMainController implements Initializable {
         imgUser.setFitHeight(105);
         imgUser.setPreserveRatio(true); 
         btnUser.setGraphic(imgUser);
-        
     } 
     
     public void loadStage(Event event){
@@ -236,6 +228,7 @@ public class ViewMainController implements Initializable {
             controller.imgUserInfo.setImage(img);
             controller.sexo = this.sexo;
             controller.contraseña = this.password;
+            controller.email = this.email;
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
@@ -271,7 +264,7 @@ public class ViewMainController implements Initializable {
         int fila = 0;
         int columna = 0;
 
-        Nodo<Producto> p = listaProductos.cabeza;
+        Nodo<Producto> p = lista.cabeza;
         int contador = 0;
 
         while (contador < inicio && p != null) {

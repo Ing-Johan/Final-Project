@@ -5,6 +5,7 @@ package Code;
  * @authores Johan & Yonier & Sebastian
  */
 public class ListaProductos {
+    
     public Nodo<Producto> cabeza;
     public int tamaño,tamEncontrados;
 
@@ -47,37 +48,8 @@ public class ListaProductos {
         tamEncontrados = cont;
         return resultados; 
     }
-     public boolean contieneProducto(Producto producto) {
-        Nodo<Producto> actual = cabeza;
-        while (actual != null) {
-            if (actual.datos.equals(producto)) {
-                return true;
-            }
-            actual = actual.sig;
-        }
-        return false;
-    }
-    
-     public void eliminarProducto(Producto producto) {
-        Nodo<Producto> a = cabeza;
-        Nodo<Producto> previo = null;
-
-        while (a != null) {
-            if (a.datos.equals(producto)) {
-                if (previo == null) {
-                    cabeza = a.sig;
-                } else {
-                    previo.sig = a.sig;
-                }
-                tamaño--;
-                return;
-            }
-            previo = a;
-            a = a.sig;
-        }
-    }
      
-     public Nodo<Producto> ultimo(){ 
+    public Nodo<Producto> ultimo(){ 
         
         Nodo<Producto> a = cabeza; 
    

@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class ViewUserInfoController implements Initializable {
     
-    String sexo,contraseña;
+    String sexo,contraseña,email;
     
     private Node centroInicial;
     
@@ -82,6 +82,7 @@ public class ViewUserInfoController implements Initializable {
             controller.nameUser.setText(this.nameUser.getText());
             controller.sexo = this.sexo;
             controller.password = contraseña;
+            controller.email = this.email;
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
@@ -113,6 +114,15 @@ public class ViewUserInfoController implements Initializable {
     
     @FXML 
     private void newPass(ActionEvent event){
-        JOptionPane.showMessageDialog(null, "Aún no agregas nada");
+       try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewRePassword.fxml"));
+            Parent nuevoCentro = loader.load();
+            ViewRePasswordController controller = loader.getController();
+            controller.setMain(borderPane);
+            controller.setMiUser(this);
+            borderPane.setCenter(nuevoCentro);
+            controller.contraseña = this.contraseña;
+            controller.email = this.email;
+        } catch (IOException e) {}
     }
 }

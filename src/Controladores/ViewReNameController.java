@@ -30,24 +30,29 @@ public class ViewReNameController implements Initializable {
     private PasswordField txtPass;
     
     @FXML
-    private Button btnCambiar;
+    private Button btnCambiar,btnCancelar;
     
     @FXML
     private void guardarInfo(ActionEvent event){
-        if(!contraseña.equals(txtPass.getText())){
-            JOptionPane.showMessageDialog(null, "Contraseña Incorrecta!");
-            txtPass.setText("");
-        }else if(txtUser.getText().contains(" ")){
-            JOptionPane.showMessageDialog(null,"No debe contener espacios en blanco");
-            txtUser.requestFocus();
-        }else{
-            JOptionPane.showMessageDialog(null, "Nombre cambiado correctamente");
-            if(miUser != null) {
-                miUser.restore();
-                miUser.nameUser.setText(txtUser.getText());
-                miUser.contraseña = contraseña;
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnCambiar)){
+            if(!contraseña.equals(txtPass.getText())){
+                JOptionPane.showMessageDialog(null, "Contraseña Incorrecta!");
+                txtPass.setText("");
+            }else if(txtUser.getText().contains(" ")){
+                JOptionPane.showMessageDialog(null,"No debe contener espacios en blanco");
+                txtUser.requestFocus();
+            }else{
+                JOptionPane.showMessageDialog(null, "Nombre cambiado correctamente");
+                if(miUser != null) {
+                    miUser.restore();
+                    miUser.nameUser.setText(txtUser.getText());
+                    miUser.contraseña = contraseña;
+                }
             }
-            
+        }else if(evt.equals(btnCancelar)){
+            miUser.restore();
         }
     }
 

@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class ViewSexoController implements Initializable {
     
-    String name,selectedGender = "",password;
+    String name,selectedGender = "",password,email;
      
     @FXML
     private Button btnSex;
@@ -65,6 +65,7 @@ public class ViewSexoController implements Initializable {
             controller.nameUser.setText(name);
             controller.password = this.password;
             controller.sexo = this.selectedGender;
+            controller.email = this.email;
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
