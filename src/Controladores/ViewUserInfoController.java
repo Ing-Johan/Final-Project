@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -59,6 +60,7 @@ public class ViewUserInfoController implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
             }
         }else if(evt.equals(regresarBtn)){
@@ -123,6 +125,86 @@ public class ViewUserInfoController implements Initializable {
             borderPane.setCenter(nuevoCentro);
             controller.contraseña = this.contraseña;
             controller.email = this.email;
+        } catch (IOException e) {}
+    }
+    @FXML 
+    private void miCarrito(ActionEvent event){
+       try {
+           
+           ((Node)(event.getSource())).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewComponents.fxml"));
+            Parent root = loader.load();
+            
+            ViewComponentsController controller = loader.getController();
+            controller.contraseña = this.contraseña;
+            controller.email = this.email;
+            controller.nombre = this.nameUser.getText();
+            controller.sexo = this.sexo;
+            controller.lComponents.setText("Mi Carrito de Compras");
+            Image img = new Image("/images/carrito-de-compras-agg.png");
+            controller.imgComponents.setImage(img);
+            controller.imgLoad = imgUserInfo.getImage();
+            
+            Scene scene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setMaximized(true);
+            newStage.setResizable(false);
+            newStage.show();
+        } catch (IOException e) {}
+    }
+    
+    @FXML
+    private void miLista(ActionEvent event){
+       try {
+           
+           ((Node)(event.getSource())).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewComponents.fxml"));
+            Parent root = loader.load();
+            
+            ViewComponentsController controller = loader.getController();
+            controller.contraseña = this.contraseña;
+            controller.email = this.email;
+            controller.nombre = this.nameUser.getText();
+            controller.sexo = this.sexo;
+            controller.lComponents.setText("Mi Lista de Deseos");
+            Image img = new Image("/images/amar.png");
+            controller.imgComponents.setImage(img);
+            controller.imgLoad = imgUserInfo.getImage();
+            
+            Scene scene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setMaximized(true);
+            newStage.setResizable(false);
+            newStage.show();
+        } catch (IOException e) {}
+    }
+    
+    @FXML
+    private void misCompras(ActionEvent event){
+       try {
+           
+           ((Node)(event.getSource())).getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewComponents.fxml"));
+            Parent root = loader.load();
+            
+            ViewComponentsController controller = loader.getController();
+            controller.contraseña = this.contraseña;
+            controller.email = this.email;
+            controller.nombre = this.nameUser.getText();
+            controller.sexo = this.sexo;
+            controller.lComponents.setText("Mis Compras");
+            Image img = new Image("/images/amor.png");
+            controller.imgComponents.setImage(img);
+            controller.imgLoad = imgUserInfo.getImage();
+            
+            Scene scene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setMaximized(true);
+            newStage.setResizable(false);
+            newStage.show();
         } catch (IOException e) {}
     }
 }
