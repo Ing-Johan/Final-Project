@@ -17,6 +17,7 @@ public class ListaDeseos {
         inicio = null;
         indiceProd = new HashMap<>();
     }
+    
      public boolean getEsColaVacia() {
         return inicio == null;
     }
@@ -47,7 +48,6 @@ public class ListaDeseos {
         try {
             
             if (contieneProducto(producto.idProd)) {
-                JOptionPane.showMessageDialog(null,"Ya agregaste este producto. Agrega otro producto diferente.");
                 return; 
             }
 
@@ -65,7 +65,6 @@ public class ListaDeseos {
                     a.sig = inicio;
                 }
             indiceProd.put(producto.idProd, a);
-            JOptionPane.showMessageDialog(null, "Producto agregado a la lista de deseos.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());

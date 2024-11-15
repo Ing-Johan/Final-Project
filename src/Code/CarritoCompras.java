@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
  *
  * @authores Johan & Yonier & Sebastian
  */
-public class CarritoCompras {
+public class CarritoCompras{
     public Nodo<Producto> inicio;
     public HashMap<String, Nodo<Producto>> indiceProd;
     
@@ -15,10 +15,11 @@ public class CarritoCompras {
         inicio = null;
         indiceProd = new HashMap<>();
     }
+    
      public boolean getEsColaVacia() {
         return inicio == null;
     }
-
+     
     public int getLongitudCola() {
         if (getEsColaVacia()) {
             return 0;
@@ -45,26 +46,23 @@ public class CarritoCompras {
         try {
             
             if (contieneProducto(producto.idProd)) {
-                JOptionPane.showMessageDialog(null,"Ya agregaste este producto. Agrega otro producto diferente.");
                 return; 
             }
-
-            if (producto != null) {
-                Nodo<Producto> a = new Nodo<>(producto);
-                if (getEsColaVacia()) {
-                    inicio = a;
-                    inicio.sig = inicio; 
-                } else {
-                    Nodo<Producto> p = inicio;
-                    while (p.sig != inicio) {
-                        p = p.sig;
-                    }
-                    p.sig = a;
-                    a.sig = inicio;
+            
+            Nodo<Producto> a = new Nodo<>(producto);
+            if (getEsColaVacia()) {
+                inicio = a;
+                inicio.sig = inicio; 
+            } else {
+                Nodo<Producto> p = inicio;
+                while (p.sig != inicio) {
+                    p = p.sig;
                 }
-            indiceProd.put(producto.idProd, a);
-            JOptionPane.showMessageDialog(null, "Producto agregado al carrito.");
+                p.sig = a;
+                a.sig = inicio;
             }
+            indiceProd.put(producto.idProd, a);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
         }
@@ -72,7 +70,6 @@ public class CarritoCompras {
     
     public void setAtender(String id) {
          if (getEsColaVacia()) {
-            JOptionPane.showMessageDialog(null,"El carrito está vacío.");
             return;
         }
 
@@ -96,7 +93,6 @@ public class CarritoCompras {
                     p.sig = a.sig;
                 }
                 indiceProd.remove(id);
-                JOptionPane.showMessageDialog(null,"Producto eliminado del carrito.");
                 break;
             }
             p = a;

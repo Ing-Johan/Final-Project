@@ -1,6 +1,8 @@
 package Controladores;
 
 import Code.CarritoCompras;
+import Code.CarritoManager;
+import Code.DeseosManager;
 import Code.ListaDeseos;
 import Code.ListaProductos;
 import Code.Nodo;
@@ -41,8 +43,8 @@ public class ViewMainController implements Initializable {
     public String password,sexo,email;
     public Label label = new Label("Todo el contenido de este sitio es propiedad de los ingenieros Johan Hernández, Yonier Cavadía y Sebastián Madera, y está protegido por derechos de autor.  ©2024");
     private final ListaProductos listaProductos = new ListaProductos();
-    public CarritoCompras miCarrito = new CarritoCompras();
-    public ListaDeseos miLista = new ListaDeseos();
+    public CarritoCompras miCarrito = CarritoManager.getCarritoCompras();
+    public ListaDeseos miLista = DeseosManager.getListaDeseo();
     
     @FXML
     private Pagination paginas;
@@ -117,11 +119,10 @@ public class ViewMainController implements Initializable {
             if (miCarrito.contieneProducto(producto.idProd)) {
                 miCarrito.setAtender(producto.idProd);
                 imageView.setImage(new Image("/images/carrito-de-compras.png"));
-                System.out.println(producto.toString()+"Eliminado");
             } else {
                 miCarrito.setAddColaH(producto);
+                System.out.println(miCarrito.getLongitudCola());
                 imageView.setImage(new Image("/images/carrito-de-compras-agg.png"));
-                System.out.println(producto.toString()+"Agregado");
             }
         });
     }
@@ -132,11 +133,9 @@ public class ViewMainController implements Initializable {
             if (miLista.contieneProducto(producto.idProd)) {
                 miLista.setAtender(producto.idProd);
                 imageView.setImage(new Image("/images/amar.png"));
-                System.out.println(producto.toString()+"Eliminado");
             } else {
                 miLista.setAddColaH(producto);
                 imageView.setImage(new Image("/images/amor.png"));
-                System.out.println(producto.toString()+"Agregado");
             }
         });
     }
@@ -233,8 +232,8 @@ public class ViewMainController implements Initializable {
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
             newStage.setScene(scene);
+            newStage.setTitle("AGROINSUMOS EP");
             newStage.show();
-            
             
         }catch(IOException e){}
     }
