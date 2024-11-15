@@ -68,7 +68,7 @@ public class ViewRePasswordController implements Initializable {
                     if(miUser != null) {
                         miUser.restore();
                         miUser.contraseña = NewPass;
-                        miUser.email = emailU;
+                        miUser.correo = emailU;
                     }
                 }
             }else JOptionPane.showMessageDialog(null,"Correo incorrecto");

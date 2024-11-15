@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="846.0" prefWidth="1150.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewUserInfoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1150.0" style="-fx-border-image-insets: 20; -fx-background-color: 2899498;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewUserInfoController">
    <children>
       <VBox alignment="CENTER" prefHeight="307.0" prefWidth="377.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -43,7 +43,7 @@
                         </VBox>
                      </top>
                      <center>
-                        <VBox fx:id="BPCenter" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="407.0" prefWidth="495.0" BorderPane.alignment="CENTER">
+                        <VBox fx:id="BPCenter" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="407.0" prefWidth="498.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button fx:id="ReName" contentDisplay="RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#newUser" prefHeight="50.0" prefWidth="215.0" style="-fx-background-color: #386f2c; -fx-border-radius: 8;" text="Cambiar usuario" textFill="WHITE">
                                  <VBox.margin>

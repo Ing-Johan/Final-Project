@@ -47,7 +47,7 @@ public class ViewReNameController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Nombre cambiado correctamente");
                 if(miUser != null) {
                     miUser.restore();
-                    miUser.nameUser.setText(txtUser.getText());
+                    miUser.nameUserInfo.setText(txtUser.getText());
                     miUser.contraseña = contraseña;
                 }
             }

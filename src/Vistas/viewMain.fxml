@@ -18,11 +18,11 @@
    <children>
       <VBox prefHeight="740.0" prefWidth="1207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="140.0" style="-fx-background-image: url('images/banner.jpg'); -fx-background-size: cover;">
+            <HBox alignment="CENTER" prefHeight="120.0" style="-fx-background-image: url('images/banner.jpg'); -fx-background-size: cover;">
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
-                        <ImageView fitHeight="105.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/logo.png" />
                            </image>
@@ -33,7 +33,7 @@
                               <Reflection fraction="0.35" topOpacity="0.19" />
                            </effect>
                         </ImageView>
-                        <TextField fx:id="txtBuscar" alignment="CENTER" prefHeight="54.0" prefWidth="754.0" promptText="Buscar..." style="-fx-border-radius: 20;">
+                        <TextField fx:id="txtBuscar" alignment="CENTER" prefHeight="48.0" prefWidth="754.0" promptText="Buscar..." style="-fx-border-radius: 40;">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -70,7 +70,7 @@
                         </TextField>
                         <Button fx:id="btnUser" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" onAction="#eventAction" prefHeight="84.0" prefWidth="113.0" style="-fx-background-color: fffff20;">
                            <graphic>
-                              <ImageView fx:id="imgUser" fitHeight="105.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgUser" fitHeight="80.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/user.jpeg" />
                                  </image>
@@ -91,7 +91,7 @@
                </children>
             </HBox>
          </children></VBox>
-      <VBox fx:id="ContenedorPrincipal" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: ffffff80;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+      <VBox fx:id="ContenedorPrincipal" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: ffffff80;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="120.0">
          <children>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#eventAction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #59b5b5;" text="Regresar" textFill="WHITE" visible="false">
                <VBox.margin>

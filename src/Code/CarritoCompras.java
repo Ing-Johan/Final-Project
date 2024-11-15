@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
  * @authores Johan & Yonier & Sebastian
  */
 public class CarritoCompras {
-    Nodo<Producto> inicio;
-    HashMap<String, Nodo<Producto>> indiceProd;
+    public Nodo<Producto> inicio;
+    public HashMap<String, Nodo<Producto>> indiceProd;
     
     public CarritoCompras(){
         inicio = null;

@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -24,6 +25,9 @@ public class ViewComponentsController implements Initializable {
    String contraseña,email,nombre,sexo;
    
    Image imgLoad;
+   
+   @FXML
+   VBox contenedor;
    
    @FXML
    Label lComponents;
@@ -43,11 +47,11 @@ public class ViewComponentsController implements Initializable {
             Parent root = loader.load();
             ViewUserInfoController controller = loader.getController();
             
-            controller.nameUser.setText(this.nombre);
+            controller.nameUserInfo.setText(this.nombre);
             controller.imgUserInfo.setImage(imgLoad);
-            controller.sexo = this.sexo;
+            controller.genero = this.sexo;
             controller.contraseña = this.contraseña;
-            controller.email = this.email;
+            controller.correo = this.email;
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
