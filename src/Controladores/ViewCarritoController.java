@@ -2,8 +2,10 @@ package Controladores;
 
 import Code.CarritoCompras;
 import Code.CarritoManager;
+import Code.ComprasManager;
 import Code.Nodo;
 import Code.Producto;
+import Code.ProductosComprados;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +28,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
@@ -34,6 +37,7 @@ import javafx.stage.Stage;
 public class ViewCarritoController implements Initializable {
    
     ViewMainController main = new ViewMainController();
+    ProductosComprados misCompras = ComprasManager.getCompras(); 
     CarritoCompras miCarrito = CarritoManager.getCarritoCompras();
     String contraseña,email,nombre,sexo;
    
@@ -81,10 +85,31 @@ public class ViewCarritoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        int elements = main.miCarrito.getLongitudCola();
-        txtInfo.setText(""+main.label.getText()+elements);      
+        txtInfo.setText(""+main.label.getText());      
         configurarPaginacion(contenedor);
         
+    }
+    
+    public void configurarBotonCompras(Button btn, Producto producto) {
+        btn.setOnAction(event -> {
+            int op = JOptionPane.showConfirmDialog(null,"¿Deseas comprar este artículo?","Elige una opción", JOptionPane.YES_NO_OPTION);
+            if(op==0){
+                String pass = JOptionPane.showInputDialog(null,"Ingresa la contraseña");
+                if(pass.equals(contraseña)){
+                    JOptionPane.showMessageDialog(null,"Compra exitosa. Puedes revisar el movimiento");
+                    misCompras.setPush(producto);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Contraseña incorrecta, revisa y vuelve a intentar");
+                }
+            }
+        });
+    }
+    
+    public void eliminarDelCarrito(Button btnQuitar, Producto producto){
+        btnQuitar.setOnAction(event -> {
+            miCarrito.setAtender(producto.idProd);
+            configurarPaginacion(contenedor);
+        });
     }
    
     private void mostrarProductos(GridPane grid, CarritoCompras carritoCompras, int paginaIndex, int productosPorPagina) {
@@ -130,16 +155,26 @@ public class ViewCarritoController implements Initializable {
             Label precio = new Label("$" + producto.precioProd);
             precio.setStyle("-fx-font-size: 12; -fx-text-fill: #555555;");
 
-            ImageView carrito = new ImageView(new Image("/images/carrito-de-compras.png"));
-            Button btnCarrito = new Button("", carrito);
-            carrito.setFitWidth(30);
-            carrito.setFitHeight(30);
-            carrito.setPreserveRatio(true);
-            btnCarrito.setStyle("-fx-background-color: ffffff01");
-            main.configurarBotonCarrito(btnCarrito, producto);
+            ImageView comprar = new ImageView(new Image("/images/bolsa-de-la-compra.png"));
+            Button btnComprar = new Button("", comprar);
+            comprar.setFitWidth(30);
+            comprar.setFitHeight(30);
+            comprar.setPreserveRatio(true);
+            btnComprar.setStyle("-fx-background-color: ffffff01");
+            configurarBotonCompras(btnComprar,producto);
+            
+            ImageView quitar = new ImageView(new Image("/images/quitar-del-carrito.png"));
+            Button btnQuitar = new Button("", quitar);
+            quitar.setFitWidth(30);
+            quitar.setFitHeight(30);
+            quitar.setPreserveRatio(true);
+            btnQuitar.setStyle("-fx-background-color: ffffff01");
+            eliminarDelCarrito(btnQuitar,producto);
+           
 
             HBox hboxBtns = new HBox();
-            hboxBtns.getChildren().add(btnCarrito);
+            hboxBtns.getChildren().addAll(btnComprar,btnQuitar);
+            hboxBtns.setStyle("-fx-alignment: center;");
 
             vboxProducto.getChildren().addAll(imagen, name, precio, hboxBtns);
 

@@ -124,7 +124,7 @@
                                  <graphic>
                                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../images/carro.png" />
+                                          <Image url="@../images/bolsa-de-la-compra.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

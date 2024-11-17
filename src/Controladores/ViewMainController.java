@@ -108,12 +108,12 @@ public class ViewMainController implements Initializable {
         btnDeseo.setStyle("-fx-background-color: ffffff01");
         configurarBotonCarrito(btnCarrito, producto);
         configurarBotonDeseo(btnDeseo, producto);
-        hboxBtns.setMargin(btnCarrito, new Insets(0,20,0,0));
+        HBox.setMargin(btnCarrito, new Insets(0,20,0,0));
         hboxBtns.getChildren().addAll(btnCarrito, btnDeseo);
         return hboxBtns;
     }
 
-    void configurarBotonCarrito(Button btnCarrito, Producto producto) {
+    public void configurarBotonCarrito(Button btnCarrito, Producto producto) {
         btnCarrito.setOnAction(event -> {
             ImageView imageView = (ImageView) btnCarrito.getGraphic();
             if (miCarrito.contieneProducto(producto.idProd)) {

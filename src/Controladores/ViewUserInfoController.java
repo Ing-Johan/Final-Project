@@ -163,13 +163,13 @@ public class ViewUserInfoController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewDeseos.fxml"));
             Parent root = loader.load();
             
-            ViewCarritoController controller = loader.getController();
+            ViewDeseosController controller = loader.getController();
             controller.contraseña = this.contraseña;
             controller.email = this.correo;
             controller.nombre = this.nameUserInfo.getText();
             controller.sexo = this.genero;
             controller.lComponents.setText("Mi Lista de Deseos");
-            controller.imgComponents.setImage(new Image("/images/amar.png"));
+            controller.imgComponents.setImage(new Image("/images/amor.png"));
             controller.imgLoad = imgUserInfo.getImage();
             
             Scene scene = new Scene(root);
@@ -190,13 +190,13 @@ public class ViewUserInfoController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vistas/viewCompras.fxml"));
             Parent root = loader.load();
             
-            ViewCarritoController controller = loader.getController();
+            ViewComprasController controller = loader.getController();
             controller.contraseña = this.contraseña;
             controller.email = this.correo;
             controller.nombre = this.nameUserInfo.getText();
             controller.sexo = this.genero;
             controller.lComponents.setText("Mis Compras");
-            controller.imgComponents.setImage(new Image("/images/amor.png"));
+            controller.imgComponents.setImage(new Image("/images/bolsa-de-la-compra.png"));
             controller.imgLoad = imgUserInfo.getImage();
             
             Scene scene = new Scene(root);

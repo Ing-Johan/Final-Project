@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  */
 public class ListaDeseos {
     
-    Nodo<Producto> inicio;
+    public Nodo<Producto> inicio;
     HashMap<String, Nodo<Producto>> indiceProd;
     
     public ListaDeseos(){
@@ -97,7 +97,6 @@ public class ListaDeseos {
                     p.sig = a.sig;
                 }
                 indiceProd.remove(id);
-                JOptionPane.showMessageDialog(null,"Producto eliminado de la lista de deseos.");
                 break;
             }
             p = a;
