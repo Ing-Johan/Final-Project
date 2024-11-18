@@ -70,10 +70,6 @@ public class ProductosComprados {
     }
 
     public void setPush(Producto producto) {
-        if (getBuscarId(producto.idProd) != null) {
-            return;
-        }
-
         NodoDoble<Producto> nuevoNodo = new NodoDoble<>(producto);
 
         if (getEsPilaVacia()) {

@@ -31,7 +31,7 @@
                                     <Image url="@../images/user.jpeg" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="nameUser" alignment="CENTER" text="USER" textAlignment="CENTER">
+                              <Label fx:id="nameUserInfo" alignment="CENTER" text="USER" textAlignment="CENTER">
                                  <font>
                                     <Font name="Arial Black" size="16.0" />
                                  </font>

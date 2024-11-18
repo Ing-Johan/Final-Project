@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="722.0" prefWidth="1176.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ViewDeseosController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="1008.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="200.0" prefWidth="1008.0" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER" prefHeight="120.0" BorderPane.alignment="CENTER">
                <children>
@@ -35,13 +35,23 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="btnComponents" mnemonicParsing="false" onAction="#actionComponent" prefHeight="40.0" prefWidth="100.0" text="Volver">
+                  <Button fx:id="btnComponents" mnemonicParsing="false" onAction="#actionComponent" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #386f2c;" text="Volver" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/volver.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </HBox>
