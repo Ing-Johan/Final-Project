@@ -1,5 +1,6 @@
 package Controladores;
 
+import Code.ArchivoUsuarios;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class ViewReNameController implements Initializable {
     
-    String contraseña;
+    String contraseña,correo;
     
     ViewUserInfoController miUser;
     
@@ -45,6 +46,8 @@ public class ViewReNameController implements Initializable {
                 txtUser.requestFocus();
             }else{
                 JOptionPane.showMessageDialog(null, "Nombre cambiado correctamente");
+                ArchivoUsuarios.actualizarInfo(correo, txtUser.getText(), null);
+
                 if(miUser != null) {
                     miUser.restore();
                     miUser.nameUserInfo.setText(txtUser.getText());

@@ -1,5 +1,6 @@
 package Controladores;
 
+import Code.ComprasManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -106,6 +107,7 @@ public class ViewUserInfoController implements Initializable {
             controller.setMiUser(this);
             borderPane.setCenter(nuevoCentro);
             controller.contraseña = this.contraseña;
+            controller.correo = this.correo;
         } catch (IOException e) {}
         
     }
@@ -198,6 +200,7 @@ public class ViewUserInfoController implements Initializable {
             controller.lComponents.setText("Mis Compras");
             controller.imgComponents.setImage(new Image("/images/bolsa-de-la-compra.png"));
             controller.imgLoad = imgUserInfo.getImage();
+            controller.cargarHistorialYMostrar(correo,ComprasManager.getCompras());
             
             Scene scene = new Scene(root);
             Stage newStage = new Stage();

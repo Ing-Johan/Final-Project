@@ -1,5 +1,6 @@
 package Controladores;
 
+import Code.ArchivoUsuarios;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -47,6 +48,7 @@ public class ViewRePasswordController implements Initializable {
                 txtNewPass.requestFocus();
             }else{
                 JOptionPane.showMessageDialog(null, "Contraseña cambiada correctamente");
+                ArchivoUsuarios.actualizarInfo(email, null, txtNewPass.getText());
                 if(miUser != null) {
                     miUser.restore();
                     miUser.contraseña = txtNewPass.getText();
@@ -65,6 +67,8 @@ public class ViewRePasswordController implements Initializable {
                     JOptionPane.showMessageDialog(null,"Debe ser más larga");
                 }else{
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada correctamente");
+                    ArchivoUsuarios.actualizarInfo(email, null, NewPass);
+                    
                     if(miUser != null) {
                         miUser.restore();
                         miUser.contraseña = NewPass;

@@ -1,11 +1,13 @@
 package Controladores;
 
+import Code.ArchivoHistorial;
 import Code.ComprasManager;
 import Code.NodoDoble;
 import Code.Producto;
 import Code.ProductosComprados;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -145,7 +147,7 @@ public class ViewComprasController implements Initializable {
 
             p = p.sig;
         }
- }
+    }
 
     private void configurarPaginacion(VBox contenedor) {
         int totalProductos = misCompras.getLongPila(); 
@@ -165,4 +167,19 @@ public class ViewComprasController implements Initializable {
         return grid;
     }
     
+    public void cargarHistorialYMostrar(String correo, ProductosComprados productosComprados) {
+        List<String[]> historial = ArchivoHistorial.cargarHistorialPorUsuario(correo);
+
+        for (String[] compra : historial) {
+            String idProducto = compra[0];
+            String nombreProducto = compra[1];
+            float precio = Float.parseFloat(compra[2]);
+
+            Producto producto = new Producto(idProducto, nombreProducto, precio, "/images/" + idProducto + ".jpg");
+            productosComprados.setPush(producto);
+        }
+        
+        GridPane grid = new GridPane();
+        mostrarProductos(grid, productosComprados, 0, 9);
+    }
 }

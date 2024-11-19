@@ -109,5 +109,15 @@ public class ProductosComprados {
  
     }
     
-}
+    public void generarHistorialDeCompras(String correoUsuario) {
+        if (getEsPilaVacia()) return;
 
+        NodoDoble<Producto> p = tope;
+        do {
+            Producto producto = p.datos;
+            ArchivoHistorial.agregarCompra(correoUsuario, producto);
+            p = p.sig;
+        } while (p != tope);
+    }
+    
+}
