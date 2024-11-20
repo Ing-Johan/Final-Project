@@ -142,58 +142,33 @@ public class ViewMainController implements Initializable {
     private void productosFiltrados(String searchText) {
         
         ContenedorPrincipal.getChildren().clear();
-        GridPane gridPane = new GridPane();
-        Nodo<Producto> productosFiltrados = listaProductos.buscarProducto(searchText);
     
-        int fila = 0;
-        int columna = 0;
-        
-        while (productosFiltrados != null) {
-            Producto producto = productosFiltrados.datos;
+        ListaProductos productosFiltrados = listaProductos.filtrarPorNombre(searchText); 
 
-            VBox vboxProducto = new VBox();
-            vboxProducto.setStyle("-fx-padding: 10; -fx-alignment: center; -fx-border-color: #cccccc; -fx-border-width: 1;");
-            vboxProducto.setPrefWidth(Control.USE_COMPUTED_SIZE);
+        if (productosFiltrados.tamaño > 0) {
+            int totalPaginas = (int) Math.ceil((double) productosFiltrados.tamaño / 12);
+            paginas.setPageCount(totalPaginas);
 
-            ImageView imagen = new ImageView(new Image(producto.rutaIMG));
-            imagen.setFitWidth(80);
-            imagen.setFitHeight(80);
-            imagen.setPreserveRatio(true);
+            paginas.setPageFactory(pageIndex -> {
+                GridPane grid = new GridPane();
+                mostrarProductosEnGrid(grid, productosFiltrados, pageIndex, 12);
+                return grid;
+            });
 
-            Label nombre = new Label(producto.nombreProd);
-            nombre.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
-
-            Label precio = new Label("$" + producto.precioProd);
-            precio.setStyle("-fx-font-size: 12; -fx-text-fill: #555555;");
-            
-            HBox hboxBtns = crearBotones(producto);
-            vboxProducto.getChildren().addAll(imagen, nombre, precio, hboxBtns);
-        
-            GridPane.setHgrow(vboxProducto, Priority.ALWAYS);
-            GridPane.setVgrow(vboxProducto, Priority.ALWAYS); 
-            gridPane.add(vboxProducto, columna, fila++);
-
-            if (fila == 4) { 
-                fila = 0;
-                columna++;
-            }
-            productosFiltrados = productosFiltrados.sig; 
-        }
-        
-        btnBack.setVisible(true);
-        ContenedorPrincipal.setMargin(btnBack, new Insets(20, 0, 0, 0));
-        
-        if(listaProductos.tamEncontrados>0) ContenedorPrincipal.getChildren().addAll(gridPane,btnBack);
-        
-        else {
+            ContenedorPrincipal.getChildren().addAll(paginas, btnBack);
+            VBox.setMargin(paginas, new Insets(0, 0, 10, 0));
+        } else {
             Image image = new Image("/images/extraviado.png");
             ImageView imgS = new ImageView(image);
-            Label labelSearch = new Label("No encontramos coincidencias",imgS);
-            imgS.setFitWidth(100);
-            imgS.setFitHeight(100);
+            Label labelSearch = new Label("No encontramos coincidencias", imgS);
+            imgS.setFitWidth(80);
+            imgS.setFitHeight(80);
             labelSearch.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
-            ContenedorPrincipal.getChildren().addAll(labelSearch,btnBack);
+            ContenedorPrincipal.getChildren().addAll(labelSearch, btnBack);
         }
+        btnBack.setVisible(true);
+        ContenedorPrincipal.setMargin(btnBack, new Insets(20, 0, 0, 0)); 
+        
     }
     
     public void UserIMG(String sex) {
@@ -279,8 +254,8 @@ public class ViewMainController implements Initializable {
             vboxProducto.setPrefWidth(Control.USE_COMPUTED_SIZE);
 
             ImageView imagen = new ImageView(new Image(producto.rutaIMG));
-            imagen.setFitWidth(100);
-            imagen.setFitHeight(100);
+            imagen.setFitWidth(80);
+            imagen.setFitHeight(80);
             imagen.setPreserveRatio(true);
 
             Label nombre = new Label(producto.nombreProd);

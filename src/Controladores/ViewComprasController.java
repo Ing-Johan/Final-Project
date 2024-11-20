@@ -123,15 +123,15 @@ public class ViewComprasController implements Initializable {
             vboxProducto.setPrefWidth(Control.USE_COMPUTED_SIZE);
 
             ImageView imagen = new ImageView(new Image(producto.rutaIMG));
-            imagen.setFitWidth(120);
-            imagen.setFitHeight(120);
+            imagen.setFitWidth(100);
+            imagen.setFitHeight(100);
             imagen.setPreserveRatio(true);
 
             Label name = new Label(producto.nombreProd);
-            name.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
+            name.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
 
             Label precio = new Label("$" + producto.precioProd);
-            precio.setStyle("-fx-font-size: 15; -fx-text-fill: #555555;");
+            precio.setStyle("-fx-font-size: 14; -fx-text-fill: #555555;");
 
             vboxProducto.getChildren().addAll(imagen, name, precio);
 

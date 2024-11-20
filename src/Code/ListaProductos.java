@@ -61,5 +61,18 @@ public class ListaProductos {
             } 
         } return a; 
     }
+    
+    public ListaProductos filtrarPorNombre(String searchText) {
+        ListaProductos filtrados = new ListaProductos();
+        Nodo<Producto> actual = cabeza;
 
+        while (actual != null) {
+            Producto producto = actual.datos;
+            if (producto.nombreProd.toLowerCase().contains(searchText.toLowerCase())) {
+                filtrados.agregarProducto(producto);
+            }
+            actual = actual.sig;
+        }
+        return filtrados;
+    }
 }
