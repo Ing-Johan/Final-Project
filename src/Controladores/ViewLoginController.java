@@ -45,12 +45,10 @@ public class ViewLoginController implements Initializable {
         String nombreUsuario = txtUser.getText();
         String contrasena = txtPass.getText();
 
-        if (ArchivoUsuarios.validarInicioSesion(correo, nombreUsuario, contrasena)) {
+        if (ArchivoUsuarios.validarInicioSesion(correo, nombreUsuario, contrasena)) 
             txtArea.setText("Inicio de sesión exitoso.");
-            
-        } else {
-            txtArea.setText("¡Correo o contraseña incorrectos!");
-        }
+        else txtArea.setText("Correo, Usuario o Contaseña errada");
+          
     }
 
     public void registrarUsuario() {
@@ -88,8 +86,11 @@ public class ViewLoginController implements Initializable {
 
             registrarUsuario();
             
-            if (txtArea.getText().equals("¡Usuario registrado exitosamente!")||txtArea.getText().equals("Inicio de sesión exitoso.")) {
-                JOptionPane.showMessageDialog(null, "¡Bienvenido!","Has ingresado",JOptionPane.PLAIN_MESSAGE);
+            if (txtArea.getText().equals("¡Usuario registrado exitosamente!")) {
+                JOptionPane.showMessageDialog(null, "¡Usuario registrado exitosamente!\n¡Un gusto tenerte por aquí!","Has ingresado",JOptionPane.PLAIN_MESSAGE);
+                loadStage(event);
+            }else if(txtArea.getText().equals("Inicio de sesión exitoso.")){
+                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso\n¡Bienvenido de nuevo!","Has ingresado",JOptionPane.PLAIN_MESSAGE);
                 loadStage(event);
             }
         }

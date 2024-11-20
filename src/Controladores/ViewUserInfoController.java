@@ -49,7 +49,7 @@ public class ViewUserInfoController implements Initializable {
         
         if(evt.equals(salirBtn)){
         
-            int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar la sesión?\nTu cuenta se perderá","Confirmación", 
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar la sesión?","Confirmación", 
             JOptionPane.YES_NO_OPTION,
             JOptionPane.WARNING_MESSAGE
             );
